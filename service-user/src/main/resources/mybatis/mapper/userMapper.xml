@@ -80,7 +80,7 @@
     </update>
 
     <delete id="deleteUser" >
-        delete org_user where user_id = #{userId}
+        delete from org_user where user_id = #{userId}
     </delete>
 
     <select id="findAll"  resultType="User">
