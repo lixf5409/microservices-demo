@@ -9,15 +9,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by lixiaofeng on 2019/11/12.
+ *
+ * @author lixiaofeng
+ * @date 2019/11/12
  */
 @Service("userService")
 public class UserServiceImpl implements IUserService {
     @Autowired
     UserMapper userMapper;
+
     @Override
     public List<User> findAll() {
         return userMapper.findAll();
+    }
+
+    @Override
+    public List<User> findListByDeptId(Integer deptId) {
+        return userMapper.findListByDeptId(deptId);
     }
 
     @Override

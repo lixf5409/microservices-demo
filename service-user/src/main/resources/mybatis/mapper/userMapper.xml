@@ -5,6 +5,9 @@
     <select id="findAll"  resultType="User">
         select * from org_user
     </select>
+    <select id="findListByDeptId"  resultType="User">
+        select * from org_user where dept_id = #{deptId}
+    </select>
 
     <select id="getUser" resultType="User">
         select * from org_user
