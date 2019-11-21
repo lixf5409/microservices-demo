@@ -63,14 +63,15 @@ public class UserController {
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "添加用户", notes = "向指定部门添加用户信息", produces = "application/json")
     @PostMapping("/add")
-    public void addUser(@RequestParam(name = "userName") String userName,
+    public User addUser(@RequestParam(name = "userName") String userName,
                         @RequestParam(name = "userCode") String userCode,
                         @RequestParam(name = "sex", required = false) String sex,
                         @RequestParam(name = "phone", required = false) String phone,
                         @RequestParam(name = "birthday", required = false) String birthday,
                         @RequestParam(name = "remarks", required = false) String remarks,
                         @RequestParam(name = "deptId") Integer deptId){
-        userService.insertUser(userName, userCode, sex, phone, birthday, remarks, deptId);
+        User user = userService.insertUser(userName, userCode, sex, phone, birthday, remarks, deptId);
+        return user;
     }
 
     @ApiResponses({

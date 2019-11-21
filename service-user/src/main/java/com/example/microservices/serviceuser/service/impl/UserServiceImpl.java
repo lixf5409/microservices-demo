@@ -46,7 +46,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void insertUser(String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId) {
+    public User insertUser(String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId) {
         User user = new User();
         user.setUserName(userName);
         user.setUserCode(userCode);
@@ -56,6 +56,7 @@ public class UserServiceImpl implements IUserService {
         user.setRemarks(remarks);
         user.setDeptId(deptId);
         userMapper.insertUser(user);
+        return user;
     }
 
     @Override

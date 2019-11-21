@@ -43,7 +43,7 @@ public interface IUserService {
      */
     User getUser(@Param("userId") Integer userId);
 
-    void insertUser(String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId);
+    User insertUser(String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId);
 
     void updateUser(Integer userId, String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId);
 
