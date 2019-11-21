@@ -24,6 +24,9 @@ public class User implements Serializable {
     private String userCode;
     @ApiModelProperty(value = "部门ID", required = true, example = "1")
     private Integer deptId;
-
+    @ApiModelProperty(value = "部门名称", required = true, example = "测试部门")
+    private String deptName;
+    @ApiModelProperty(value = "部门编码", required = true, example = "dept1")
+    private String deptCode;
 
 }

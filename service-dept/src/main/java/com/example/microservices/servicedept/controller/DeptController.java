@@ -20,7 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/dept")
-@Api(tags = "用户服务")
+@Api(tags = "部门服务")
 public class DeptController {
 
     @Autowired

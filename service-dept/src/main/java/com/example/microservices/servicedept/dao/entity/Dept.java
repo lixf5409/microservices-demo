@@ -17,7 +17,7 @@ public class Dept implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "部门ID")
-    private String deptId;
+    private Integer deptId;
     @ApiModelProperty(value = "部门名称", required = true)
     private String deptName;
     @ApiModelProperty(value = "部门编码", required = true)
