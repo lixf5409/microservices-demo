@@ -19,7 +19,7 @@ import java.util.List;
  * @author chengqianpeng
  */
 @RestController
-@RequestMapping("/dept")
+@RequestMapping("")
 @Api(tags = "部门服务")
 public class DeptController {
 
