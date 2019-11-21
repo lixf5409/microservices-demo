@@ -14,7 +14,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @ClassName SwaggerConfig
- * @Description: TODO
  * @Author chengqianpeng
  * @Date 2019/11/21 
  **/

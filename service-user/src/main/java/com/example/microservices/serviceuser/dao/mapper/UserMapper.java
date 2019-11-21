@@ -46,4 +46,10 @@ public interface UserMapper {
      * @throws
      */
     User getUser(Integer userId);
+
+    void insertUser(User user);
+
+    void updateUser(User user);
+
+    void deleteUser(Integer userId);
 }

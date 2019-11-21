@@ -44,4 +44,36 @@ public class UserServiceImpl implements IUserService {
         }
         return user;
     }
+
+    @Override
+    public void insertUser(String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId) {
+        User user = new User();
+        user.setUserName(userName);
+        user.setUserCode(userCode);
+        user.setSex(sex);
+        user.setPhone(phone);
+        user.setBirthday(birthday);
+        user.setRemarks(remarks);
+        user.setDeptId(deptId);
+        userMapper.insertUser(user);
+    }
+
+    @Override
+    public void updateUser(Integer userId, String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId) {
+        User user = new User();
+        user.setUserId(userId);
+        user.setUserName(userName);
+        user.setUserCode(userCode);
+        user.setSex(sex);
+        user.setPhone(phone);
+        user.setBirthday(birthday);
+        user.setRemarks(remarks);
+        user.setDeptId(deptId);
+        userMapper.updateUser(user);
+    }
+
+    @Override
+    public void deleteUser(Integer userId) {
+        userMapper.deleteUser(userId);
+    }
 }

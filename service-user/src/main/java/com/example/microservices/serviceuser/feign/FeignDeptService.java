@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @ClassName FeignUserService
- * @Description: TODO
  * @Author chengqianpeng
  * @Date 2019/11/21 
  **/
