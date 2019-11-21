@@ -18,6 +18,7 @@
         <module>eureka-server</module>
         <module>service-user</module>
         <module>service-dept</module>
+        <module>gateway-service</module>
     </modules>
 
     <properties>

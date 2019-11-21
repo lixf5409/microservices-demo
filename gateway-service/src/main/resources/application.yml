@@ -1,0 +1,33 @@
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+      routes:
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+        - id: service-dept
+          uri: lb://service-dept
+          predicates:
+            - Path=/dept/**
+          filters:
+            - StripPrefix=1
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
