@@ -18,10 +18,10 @@
 
 ## 配置说明
     eureka-server的端口默认为8761，由于其他服务均会调用eureka-server，所以不建议修改端口，如需修改请记得将其他三个服务的eureka配置地址同时修改。
-    `eureka:
+    eureka:
       client:
         service-url:
-          defaultZone: http://localhost:8761/eureka/`
+          defaultZone: http://localhost:8761/eureka/
           
 ## API文档访问地址
     http://ip + gateway-port/swagger-ui.html
