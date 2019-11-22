@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by lixiaofeng on 2019/11/12.
+ *
+ * @author lixiaofeng
+ * @date 2019/11/12
  */
 @Service("deptService")
 public class DeptServiceImpl implements IDeptService {
@@ -19,6 +21,7 @@ public class DeptServiceImpl implements IDeptService {
     DeptMapper deptMapper;
     @Override
     public PageInfo<Dept> findAll(Integer curPage, Integer pageSize) {
+        //分页插件，只有startPage方法后的第一个select会执行分页
         PageHelper.startPage(curPage, pageSize);
         List<Dept> list = deptMapper.findAll();
         PageInfo<Dept> pageInfo =  new PageInfo<Dept>(list);
