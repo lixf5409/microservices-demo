@@ -22,15 +22,15 @@ public class User implements Serializable {
     private String userName;
     @ApiModelProperty(value = "用户编码", required = true, example = "code1")
     private String userCode;
-    @ApiModelProperty(value = "用户编码", required = true, example = "code1")
-    private String sex;
     @ApiModelProperty(value = "性别", required = true, example = "0")
-    private String phone;
+    private String sex;
     @ApiModelProperty(value = "手机号", required = true, example = "13333333333")
-    private String birthday;
+    private String phone;
     @ApiModelProperty(value = "生日", required = true, example = "1999-11-11")
+    private String birthday;
+    @ApiModelProperty(value = "备注", required = true, example = "备注信息")
     private String remarks;
-    @ApiModelProperty(value = "备注", required = true, example = "备注")
+    @ApiModelProperty(value = "部门ID", required = true, example = "1")
     private Integer deptId;
     @ApiModelProperty(value = "部门名称", required = true, example = "测试部门")
     private String deptName;
