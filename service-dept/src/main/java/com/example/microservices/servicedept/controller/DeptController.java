@@ -3,15 +3,13 @@ package com.example.microservices.servicedept.controller;
 
 import com.example.microservices.servicedept.dao.entity.Dept;
 import com.example.microservices.servicedept.service.IDeptService;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,8 +29,9 @@ public class DeptController {
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "获取所有部门", notes = "获取所有部门列表", response = Dept.class, responseContainer = "List", consumes="application/json")
     @GetMapping("/list")
-    public  List<Dept> listDept() {
-        List<Dept> depts = deptService.findAll();
+    public  PageInfo<Dept> listDept(@RequestParam(name = "curPage") Integer curPage,
+                                @RequestParam(name = "pageSize") Integer pageSize) {
+        PageInfo<Dept> depts = deptService.findAll(curPage,pageSize);
         return depts;
     }
 

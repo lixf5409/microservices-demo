@@ -3,6 +3,8 @@ package com.example.microservices.servicedept.service.impl;
 import com.example.microservices.servicedept.dao.entity.Dept;
 import com.example.microservices.servicedept.dao.mapper.DeptMapper;
 import com.example.microservices.servicedept.service.IDeptService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +18,11 @@ public class DeptServiceImpl implements IDeptService {
     @Autowired
     DeptMapper deptMapper;
     @Override
-    public List<Dept> findAll() {
-        return deptMapper.findAll();
+    public PageInfo<Dept> findAll(Integer curPage, Integer pageSize) {
+        PageHelper.startPage(curPage, pageSize);
+        List<Dept> list = deptMapper.findAll();
+        PageInfo<Dept> pageInfo =  new PageInfo<Dept>(list);
+        return pageInfo;
     }
 
     @Override
