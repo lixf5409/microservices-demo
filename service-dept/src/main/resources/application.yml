@@ -16,3 +16,16 @@ eureka:
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml
   config-location:  classpath:/mybatis/config/mybatis-config.xml
+
+#swagger 配置
+swagger:
+  title: 部门服务API
+  desc: 基于springBoot编写的RESful-API
+  version: 0.0.1.SNAPSHOT
+  termsOfServiceUrl: javascript:void(0)
+  license: Apache 2.0
+  licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.html
+  basePackage: com.example.microservices.servicedept.controller
+  contactName: chengqp
+  contactUrl:
+  contactEmail: chengqianpeng@resoft.css.com.cn
