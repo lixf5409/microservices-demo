@@ -8,8 +8,6 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 /**
  * @author chengqianpeng
  */
@@ -30,7 +28,7 @@ public class DeptController {
     )
     @GetMapping("/list")
     public  PageInfo<Dept> listDept(Integer pageNum,
-                             Integer pageSize) {
+                             @RequestParam Integer pageSize) {
         return deptService.findAll(pageNum,pageSize);
     }
 
