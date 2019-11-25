@@ -31,8 +31,7 @@ public class DeptController {
     @GetMapping("/list")
     public  PageInfo<Dept> listDept(Integer pageNum,
                              Integer pageSize) {
-        PageInfo<Dept> depts = deptService.findAll(pageNum,pageSize);
-        return depts;
+        return deptService.findAll(pageNum,pageSize);
     }
 
     @ApiResponses({
@@ -42,7 +41,6 @@ public class DeptController {
     @ApiOperation(value = "获取部门信息", notes = "根据部门ID获取用户信息", response = Dept.class, consumes="application/json")
     @GetMapping("/get/{deptId}")
     public Dept getDept(@PathVariable Integer deptId) {
-        Dept dept = deptService.getDept(deptId);
-        return dept;
+        return deptService.getDept(deptId);
     }
 }
