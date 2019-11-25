@@ -8,7 +8,9 @@ import java.util.List;
 
 
 /**
- * Created by lixiaofeng on 2019/11/12.
+ *
+ * @author lixiaofeng
+ * @date 2019/11/12
  */
 @Mapper()
 @Repository("deptMapper")

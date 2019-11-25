@@ -20,9 +20,9 @@ public class DeptServiceImpl implements IDeptService {
     @Autowired
     DeptMapper deptMapper;
     @Override
-    public PageInfo<Dept> findAll(Integer curPage, Integer pageSize) {
+    public PageInfo<Dept> findAll(Integer pageNum, Integer pageSize) {
         //分页插件，只有startPage方法后的第一个select会执行分页
-        PageHelper.startPage(curPage, pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         List<Dept> list = deptMapper.findAll();
         PageInfo<Dept> pageInfo =  new PageInfo<Dept>(list);
         return pageInfo;
