@@ -5,5 +5,5 @@ CREATE TABLE `org_dept` (
   PRIMARY KEY (`dept_id`)
 ) ;
 
-ALTER TABLE `demodept`.`org_dept`
+ALTER TABLE `org_dept`
 ADD COLUMN `parent_id` int(32) NULL AFTER `dept_code`;
