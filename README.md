@@ -26,4 +26,16 @@
 ## API文档访问地址
     http://ip + gateway-port/swagger-ui.html
     可以通过右上角下拉框切换服务
+    
+    
+## 学习参考资料
+
+[微服务之服务调用与安全控制](http://www.sohu.com/a/272857606_671228)
+
+[分布式事务](http://www.tianshouzhi.com/api/tutorials/distributed_transaction/383)  
+
+[阿里开源分布式事务框架seata](http://seata.io/zh-cn)
+
+
+
       
