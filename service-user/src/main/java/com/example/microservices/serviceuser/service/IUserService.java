@@ -1,6 +1,7 @@
 package com.example.microservices.serviceuser.service;
 
 import com.example.microservices.serviceuser.dao.entity.User;
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public interface IUserService {
      * @return java.util.List<com.example.microservices.serviceuser.dao.entity.User>
      * @throws
      */
-    List<User> findListByDeptId(Integer deptId);
+    PageInfo<User> findListByDeptId(Integer deptId, Integer pageNum, Integer pageSize);
 
     /**
      * 根据用户ID获取用户信息

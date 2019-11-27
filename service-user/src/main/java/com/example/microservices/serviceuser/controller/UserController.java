@@ -3,10 +3,8 @@ package com.example.microservices.serviceuser.controller;
 
 import com.example.microservices.serviceuser.dao.entity.User;
 import com.example.microservices.serviceuser.service.IUserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +14,7 @@ import java.util.List;
  * @author chengqianpeng
  */
 @RestController
-@RequestMapping("")
+@RequestMapping("/user")
 @Api(tags = "用户服务")
 public class UserController {
 
@@ -28,7 +26,7 @@ public class UserController {
             @ApiResponse(code=404, message = "请求失败"),
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "获取所有用户", notes = "查询所有用户列表", response = User.class, responseContainer = "List", consumes="application/json")
-    @GetMapping("/list")
+    @GetMapping("")
     public  List<User> listAll() {
         List<User> users = userService.findAll();
         return users;
@@ -39,9 +37,13 @@ public class UserController {
             @ApiResponse(code=404, message = "请求失败"),
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "获取部门下的用户", notes = "查询部门下的用户列表", response = User.class, responseContainer = "List", consumes="application/json")
-    @GetMapping("/find/{deptId}")
-    public  List<User> findListByDeptId(@PathVariable(name = "deptId") Integer deptId) {
-        List<User> users = userService.findListByDeptId(deptId);
+    @ApiImplicitParams(
+            @ApiImplicitParam(paramType = "query", dataType = "int", name = "pageNum", value = "页码", required = true, defaultValue = "1")
+    )
+    @GetMapping("/dept/{deptId}")
+    public  PageInfo<User> findListByDeptId(@PathVariable(name = "deptId") Integer deptId,Integer pageNum,
+                                        @RequestParam Integer pageSize) {
+        PageInfo<User> users = userService.findListByDeptId(deptId,pageNum,pageSize);
         return users;
     }
 
@@ -51,7 +53,7 @@ public class UserController {
             @ApiResponse(code=404, message = "请求失败"),
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "获取用户信息", notes = "根据用户ID获取用户信息", response = User.class, produces = "application/json", consumes="application/json")
-    @GetMapping("/get/{userId}")
+    @GetMapping("/{userId}")
     public User getUser(@PathVariable(name = "userId") Integer userId) {
         User user = userService.getUser(userId);
         return user;
@@ -62,7 +64,7 @@ public class UserController {
             @ApiResponse(code=404, message = "参数错误"),
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "添加用户", notes = "向指定部门添加用户信息", produces = "application/json")
-    @PostMapping("/add")
+    @PostMapping("")
     public User addUser(@RequestParam(name = "userName") String userName,
                         @RequestParam(name = "userCode") String userCode,
                         @RequestParam(name = "sex", required = false) String sex,
@@ -79,8 +81,8 @@ public class UserController {
             @ApiResponse(code=404, message = "参数错误"),
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "更新用户", notes = "根据用户ID更新用户信息", produces = "application/json")
-    @PutMapping("/update")
-    public void updateUser(@RequestParam(name = "userId") Integer userId,
+    @PutMapping("/{userId}")
+    public void updateUser(@PathVariable(name = "userId") Integer userId,
                            @RequestParam(name = "userName", required = false) String userName,
                             @RequestParam(name = "userCode", required = false) String userCode,
                             @RequestParam(name = "sex", required = false) String sex,
@@ -96,7 +98,7 @@ public class UserController {
             @ApiResponse(code=404, message = "参数不能为空"),
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "删除用户", notes = "根据用户ID删除用户信息")
-    @DeleteMapping("/delete/{userId}")
+    @DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable(name = "userId") Integer userId){
         userService.deleteUser(userId);
     }

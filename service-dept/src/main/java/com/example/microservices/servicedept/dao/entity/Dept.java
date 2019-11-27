@@ -22,6 +22,8 @@ public class Dept implements Serializable {
     private String deptName;
     @ApiModelProperty(value = "部门编码", required = true)
     private String deptCode;
+    @ApiModelProperty(value = "父级ID", required = true)
+    private Integer parentId;
 
 
 }

@@ -5,6 +5,8 @@ import com.example.microservices.serviceuser.dao.mapper.UserMapper;
 import com.example.microservices.serviceuser.feign.FeignDeptService;
 import com.example.microservices.serviceuser.feign.entity.Dept;
 import com.example.microservices.serviceuser.service.IUserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,8 +31,13 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<User> findListByDeptId(Integer deptId) {
-        return userMapper.findListByDeptId(deptId);
+    public PageInfo<User> findListByDeptId(Integer deptId, Integer pageNum, Integer pageSize) {
+        //分页插件，只有startPage方法后的第一个select会执行分页
+        PageHelper.startPage(pageNum, pageSize);
+        List<User> list = userMapper.findListByDeptId(deptId);
+
+        PageInfo<User> pageInfo =  new PageInfo<User>(list);
+        return pageInfo;
     }
 
     @Override

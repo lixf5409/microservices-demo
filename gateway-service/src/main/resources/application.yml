@@ -13,15 +13,15 @@ spring:
         - id: service-user
           uri: lb://service-user
           predicates:
-            - Path=/user/**
+            - Path=/api/users/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
         - id: service-dept
           uri: lb://service-dept
           predicates:
-            - Path=/dept/**
+            - Path=/api/depts/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
 
 eureka:
   instance:

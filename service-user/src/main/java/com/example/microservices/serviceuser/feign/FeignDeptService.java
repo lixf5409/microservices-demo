@@ -23,6 +23,6 @@ public interface FeignDeptService {
      * @return java.lang.String
      * @throws
      */
-    @RequestMapping(value = "/dept/get/{deptId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/depts/dept/{deptId}", method = RequestMethod.GET)
     Dept getDeptById(@PathVariable(value = "deptId") Integer deptId);
 }
