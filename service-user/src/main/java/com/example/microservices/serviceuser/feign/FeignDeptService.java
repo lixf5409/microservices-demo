@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Author chengqianpeng
  * @Date 2019/11/21 
  **/
-@FeignClient(value = "gateway-service", fallback = FeignDeptHystric.class)
+@FeignClient(value = "service-dept", fallback = FeignDeptHystric.class)
 public interface FeignDeptService {
 
     /**
@@ -23,6 +23,6 @@ public interface FeignDeptService {
      * @return java.lang.String
      * @throws
      */
-    @RequestMapping(value = "/api/depts/dept/{deptId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/dept/{deptId}", method = RequestMethod.GET)
     Dept getDeptById(@PathVariable(value = "deptId") Integer deptId);
 }
