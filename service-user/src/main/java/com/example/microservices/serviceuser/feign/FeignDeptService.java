@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Author chengqianpeng
  * @Date 2019/11/21 
  **/
-@FeignClient(value = "gateway-service")
+@FeignClient(value = "gateway-service", fallback = FeignDeptHystric.class)
 public interface FeignDeptService {
 
     /**

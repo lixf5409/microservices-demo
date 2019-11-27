@@ -8,6 +8,10 @@ spring:
   profiles:
     active: dev
 
+feign:
+  hystrix:
+    enabled: true
+
 eureka:
   client:
     serviceUrl:
