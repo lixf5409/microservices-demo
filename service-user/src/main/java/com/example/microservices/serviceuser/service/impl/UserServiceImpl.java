@@ -7,10 +7,12 @@ import com.example.microservices.serviceuser.feign.entity.Dept;
 import com.example.microservices.serviceuser.service.IUserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import io.shardingsphere.core.keygen.DefaultKeyGenerator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.jnlp.IntegrationService;
 import java.util.List;
 
 /**
@@ -41,7 +43,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User getUser(Integer userId) {
+    public User getUser(Long userId) {
         User user =  userMapper.getUser(userId);
         if (user != null) {
             Dept dept = feignDeptService.getDeptById(user.getDeptId());
@@ -55,6 +57,9 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User insertUser(String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId) {
         User user = new User();
+        //通过sharding-jdbc生成分布式id
+        Number userId = new DefaultKeyGenerator().generateKey();
+        user.setUserId(userId.longValue());
         user.setUserName(userName);
         user.setUserCode(userCode);
         user.setSex(sex);
@@ -67,7 +72,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void updateUser(Integer userId, String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId) {
+    public void updateUser(Long userId, String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId) {
         User user = new User();
         user.setUserId(userId);
         user.setUserName(userName);
@@ -81,7 +86,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void deleteUser(Integer userId) {
+    public void deleteUser(Long userId) {
         userMapper.deleteUser(userId);
     }
 }

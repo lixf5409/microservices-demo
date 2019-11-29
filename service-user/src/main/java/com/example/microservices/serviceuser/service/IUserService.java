@@ -42,11 +42,11 @@ public interface IUserService {
      * @return com.example.microservices.serviceuser.dao.entity.User
      * @throws
      */
-    User getUser(@Param("userId") Integer userId);
+    User getUser(@Param("userId") Long userId);
 
     User insertUser(String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId);
 
-    void updateUser(Integer userId, String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId);
+    void updateUser(Long userId, String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId);
 
-    void deleteUser(Integer userId);
+    void deleteUser(Long userId);
 }

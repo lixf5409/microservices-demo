@@ -54,7 +54,7 @@ public class UserController {
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "获取用户信息", notes = "根据用户ID获取用户信息", response = User.class, produces = "application/json", consumes="application/json")
     @GetMapping("/{userId}")
-    public User getUser(@PathVariable(name = "userId") Integer userId) {
+    public User getUser(@PathVariable(name = "userId") Long userId) {
         User user = userService.getUser(userId);
         return user;
     }
@@ -82,7 +82,7 @@ public class UserController {
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "更新用户", notes = "根据用户ID更新用户信息", produces = "application/json")
     @PutMapping("/{userId}")
-    public void updateUser(@PathVariable(name = "userId") Integer userId,
+    public void updateUser(@PathVariable(name = "userId") Long userId,
                            @RequestParam(name = "userName", required = false) String userName,
                             @RequestParam(name = "userCode", required = false) String userCode,
                             @RequestParam(name = "sex", required = false) String sex,
@@ -99,7 +99,7 @@ public class UserController {
             @ApiResponse(code=500, message = "参数错误")})
     @ApiOperation(value = "删除用户", notes = "根据用户ID删除用户信息")
     @DeleteMapping("/{userId}")
-    public void deleteUser(@PathVariable(name = "userId") Integer userId){
+    public void deleteUser(@PathVariable(name = "userId") Long userId){
         userService.deleteUser(userId);
     }
 }
