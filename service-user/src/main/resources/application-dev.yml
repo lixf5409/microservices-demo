@@ -31,6 +31,14 @@ sharding:
                 sharding-column: user_id
                 algorithm-expression: org_user_$->{user_id % 3}
               key-generator-column-name: user_id
+        props:
+          sql:
+            show: true
+
+logging:
+  level:
+    com.example.microserives.serviceuser.dao.mapper: debug
+
 management:
   endpoints:
     web:
