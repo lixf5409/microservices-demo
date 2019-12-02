@@ -43,7 +43,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User getUser(Long userId) {
+    public User getUser(String userId) {
         User user =  userMapper.getUser(userId);
         if (user != null) {
             Dept dept = feignDeptService.getDeptById(user.getDeptId());
@@ -59,7 +59,7 @@ public class UserServiceImpl implements IUserService {
         User user = new User();
         //通过sharding-jdbc生成分布式id
         Number userId = new DefaultKeyGenerator().generateKey();
-        user.setUserId(userId.longValue());
+        user.setUserId(String.valueOf(userId.longValue()));
         user.setUserName(userName);
         user.setUserCode(userCode);
         user.setSex(sex);
@@ -72,7 +72,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void updateUser(Long userId, String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId) {
+    public void updateUser(String userId, String userName, String userCode, String sex, String phone, String birthday, String remarks, Integer deptId) {
         User user = new User();
         user.setUserId(userId);
         user.setUserName(userName);
@@ -86,7 +86,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void deleteUser(Long userId) {
+    public void deleteUser(String userId) {
         userMapper.deleteUser(userId);
     }
 }

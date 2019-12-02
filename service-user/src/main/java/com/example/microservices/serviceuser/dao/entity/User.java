@@ -17,7 +17,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "用户ID", example = "1")
-    private Long userId;
+    private String userId;
     @ApiModelProperty(value = "用户名", required = true, example = "测试用户")
     private String userName;
     @ApiModelProperty(value = "用户编码", required = true, example = "code1")
