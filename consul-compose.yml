@@ -1,6 +1,8 @@
 #network_mode是我自己建立的一个网段，也可以使用已有的网段，建立网段的命令如下
 #docker network create --driver bridge --subnet 10.10.0.0/24  mynet
 #经测试多数据中心之间虽然能看到注册的服务，但是通过feign调用服务获取不到服务节点
+#想要两个数据中心之间建立通信，只需要加入同一个WAN池就可以，命令如下:以dc1为例，加入dc2
+#docker exec consul1 consul join -wan consul5
 version: '3.7'
 
 services:
@@ -11,6 +13,7 @@ services:
     network_mode: mynet
     ports:
       - 8500:8500
+    # 在一个datacenter中期望提供的server节点数目，当该值提供的时候，consul一直等到达到指定sever数目的时候才会引导整个集群，该标记不能和bootstrap公用（推荐使用的方式）
     command: agent -server -client=0.0.0.0 -bootstrap-expect=3 -node=consul1 -datacenter=dc1
   consul2:
     image: consul:latest
