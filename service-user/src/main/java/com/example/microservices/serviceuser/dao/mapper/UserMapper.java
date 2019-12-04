@@ -45,11 +45,11 @@ public interface UserMapper {
      * @return com.example.microservices.serviceuser.dao.entity.User
      * @throws
      */
-    User getUser(String userId);
+    User getUser(Long userId);
 
     void insertUser(User user);
 
     void updateUser(User user);
 
-    void deleteUser(String userId);
+    void deleteUser(Long userId);
 }

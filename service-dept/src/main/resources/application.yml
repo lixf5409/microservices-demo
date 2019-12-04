@@ -7,11 +7,15 @@ spring:
     name: service-dept
   profiles:
     active: dev
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+      discovery: true
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
 
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml

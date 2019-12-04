@@ -55,7 +55,7 @@ public class UserController {
     @ApiOperation(value = "获取用户信息", notes = "根据用户ID获取用户信息", response = User.class, produces = "application/json", consumes="application/json")
     @GetMapping("/{userId}")
     public User getUser(@PathVariable(name = "userId") String userId) {
-        User user = userService.getUser(userId);
+        User user = userService.getUser(Long.parseLong(userId));
         return user;
     }
 
@@ -90,7 +90,7 @@ public class UserController {
                             @RequestParam(name = "birthday", required = false) String birthday,
                             @RequestParam(name = "remarks", required = false) String remarks,
                             @RequestParam(name = "deptId", required = false) Integer deptId){
-        userService.updateUser(userId,userName, userCode, sex, phone, birthday, remarks, deptId);
+        userService.updateUser(Long.parseLong(userId),userName, userCode, sex, phone, birthday, remarks, deptId);
     }
 
     @ApiResponses({
@@ -100,6 +100,6 @@ public class UserController {
     @ApiOperation(value = "删除用户", notes = "根据用户ID删除用户信息")
     @DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable(name = "userId") String userId){
-        userService.deleteUser(userId);
+        userService.deleteUser(Long.parseLong(userId));
     }
 }
