@@ -1,5 +1,6 @@
 #network_mode是我自己建立的一个网段，也可以使用已有的网段，建立网段的命令如下
 #docker network create --driver bridge --subnet 10.10.0.0/24  mynet
+#经测试多数据中心之间虽然能看到注册的服务，但是通过feign调用服务获取不到服务节点
 version: '3.7'
 
 services:
