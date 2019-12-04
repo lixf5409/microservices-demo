@@ -36,6 +36,14 @@
 
 [阿里开源分布式事务框架seata](http://seata.io/zh-cn)
 
+[Docker入门](https://blog.csdn.net/deng624796905/article/details/86493330)
+
+[Eureka Consul对比](https://blog.csdn.net/ZYC88888/article/details/81453647)
+
+[Eureka&Zookeeper&Consul 原理与对比](https://blog.csdn.net/weixin_43650254/article/details/95381194)
+
+[Consul](https://www.cnblogs.com/bossma/p/9756809.html)
+
 ## 打包
 
 打包时先将父pom.xml中的modules注释，进行install之后再讲modules打开，再对各个module进行package
