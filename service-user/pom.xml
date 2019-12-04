@@ -14,7 +14,9 @@
 	<name>service-user</name>
 	<description>Demo project for Spring Boot</description>
 
-
+	<properties>
+		<skipTests>true</skipTests>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

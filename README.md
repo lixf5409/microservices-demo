@@ -36,6 +36,8 @@
 
 [阿里开源分布式事务框架seata](http://seata.io/zh-cn)
 
+## 打包
 
+打包时先将父pom.xml中的modules注释，进行install之后再讲modules打开，再对各个module进行package
 
       

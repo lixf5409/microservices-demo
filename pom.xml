@@ -13,13 +13,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>microservices-demo</name>
     <description>Demo project for Spring Boot</description>
+    <packaging>pom</packaging>
 
-    <modules>
-        <module>eureka-server</module>
-        <module>service-user</module>
-        <module>service-dept</module>
-        <module>gateway-service</module>
-    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,6 +23,12 @@
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
     </properties>
 
+    <modules>
+        <module>eureka-server</module>
+        <module>service-user</module>
+        <module>service-dept</module>
+        <module>gateway-service</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -54,9 +55,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+
         </plugins>
     </build>
-
 
 
 </project>
