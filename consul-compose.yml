@@ -1,0 +1,63 @@
+#network_mode是我自己建立的一个网段，也可以使用已有的网段，建立网段的命令如下
+#docker network create --driver bridge --subnet 10.10.0.0/24  mynet
+version: '3.7'
+
+services:
+  consul1: 
+    image: consul:latest
+    container_name: consul1
+    restart: always
+    network_mode: mynet
+    ports:
+      - 8500:8500
+    command: agent -server -client=0.0.0.0 -bootstrap-expect=3 -node=consul1 -datacenter=dc1
+  consul2:
+    image: consul:latest
+    container_name: consul2
+    network_mode: mynet
+    restart: always
+    command: agent -server -client=0.0.0.0 -retry-join=consul1 -node=consul2 -datacenter=dc1
+  consul3:
+    image: consul:latest
+    container_name: consul3
+    network_mode: mynet
+    restart: always
+    command: agent -server -client=0.0.0.0 -retry-join=consul1 -node=consul3 -datacenter=dc1
+  consul4:
+    image: consul:latest
+    container_name: consul4
+    network_mode: mynet
+    restart: always
+    ports:
+      - 8501:8500
+    command: agent -client=0.0.0.0 -retry-join=consul1 -ui -node=client1 -datacenter=dc1
+  consul5:
+    image: consul:latest
+    container_name: consul5
+    network_mode: mynet
+    restart: always
+    ports:
+      - 8600:8500
+    command: agent -server -client=0.0.0.0 -bootstrap-expect=3 -node=consul5 -datacenter=dc2
+  consul6:
+    image: consul:latest
+    container_name: consul6
+    network_mode: mynet
+    restart: always
+    command: agent -server -client=0.0.0.0 -retry-join=consul5 -node=consul6 -datacenter=dc2
+  consul7:
+    image: consul:latest
+    container_name: consul7
+    network_mode: mynet
+    restart: always
+    command: agent -server -client=0.0.0.0 -retry-join=consul5 -node=consul7 -datacenter=dc2
+  consul8:
+    image: consul:latest
+    container_name: consul8
+    network_mode: mynet
+    restart: always
+    ports:
+      - 8601:8500
+    command: agent -client=0.0.0.0 -retry-join=consul5 -ui -node=client2 -datacenter=dc2
+    
+
