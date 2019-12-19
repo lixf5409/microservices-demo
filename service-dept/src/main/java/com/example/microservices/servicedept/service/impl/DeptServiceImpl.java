@@ -4,8 +4,10 @@ import com.example.microservices.servicedept.dao.entity.Dept;
 import com.example.microservices.servicedept.dao.mapper.DeptMapper;
 import com.example.microservices.servicedept.service.IDeptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,6 +19,11 @@ import java.util.List;
 public class DeptServiceImpl implements IDeptService {
     @Autowired
     DeptMapper deptMapper;
+    @Resource
+    RedisTemplate<Integer,Dept> redisTemplate;
+//    @Autowired
+//    RedisTemplate<Object,Object> redisTemplate;
+
     @Override
     public List<Dept> findAll() {
         return deptMapper.findAll();
@@ -24,6 +31,12 @@ public class DeptServiceImpl implements IDeptService {
 
     @Override
     public Dept getDept(Integer deptId) {
-        return deptMapper.getDept(deptId);
+        Dept dept = (Dept)redisTemplate.opsForValue().get(deptId);
+        if(dept != null){
+            return dept;
+        }
+        dept = deptMapper.getDept(deptId);
+        redisTemplate.opsForValue().set(deptId,dept);
+        return dept;
     }
 }

@@ -77,10 +77,16 @@
             <artifactId>lombok</artifactId>
             <version>1.18.6</version>
         </dependency>
+
+        <!-- redis依赖包 -->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--<dependency>
             <groupId>io.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
             <version>3.0.0</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 </project>

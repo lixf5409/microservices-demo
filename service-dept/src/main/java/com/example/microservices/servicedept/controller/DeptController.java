@@ -32,7 +32,8 @@ public class DeptController {
     @ApiOperation(value = "获取所有部门", notes = "获取所有部门列表", response = Dept.class, responseContainer = "List", produces="application/json", consumes="application/json")
     @GetMapping("")
     public List<Dept> listDept() {
-        return deptService.findAll();
+        List<Dept> depts =  deptService.findAll();
+        return depts;
     }
 
     @ApiResponses({
