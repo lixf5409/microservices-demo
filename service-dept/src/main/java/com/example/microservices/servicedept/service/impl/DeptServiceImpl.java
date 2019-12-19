@@ -31,7 +31,7 @@ public class DeptServiceImpl implements IDeptService {
 
     @Override
     public Dept getDept(Integer deptId) {
-        Dept dept = (Dept)redisTemplate.opsForValue().get(deptId);
+        Dept dept = redisTemplate.opsForValue().get(deptId);
         if(dept != null){
             return dept;
         }
